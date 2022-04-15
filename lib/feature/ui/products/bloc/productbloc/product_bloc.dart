@@ -31,7 +31,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     this.searchByTagId,
     this.searchByProductName,
   ) : super(ProductInitialState()) {
-    on<ProductEvent>(_getProductHandler);
+    on<GetProductEvent>(_getProductHandler);
     on<ProductInitialEvent>(_productInitStateHandler);
     on<ProductFavoriteSetEvent>(_productFavoriteSetEventHandler);
     on<ProductFilterByTagEvent>(_productFilterByTagHandler);
@@ -119,10 +119,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       ProductFavoriteSetEvent event, emit) async {
     emit(ProductLoadingState());
     final either = await setFavoriteProduct(
-      SetFavoriteRequestModel(
-        setBoolValue: SetBoolValue(isFavorite: event.setBoolValue),
-        setPkColumn: SetPkColumn(id: event.productId),
-      ),
+      FavoriteParams(event.setBoolValue,event.productId),
     );
 
     either.fold(
@@ -134,3 +131,4 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     add(const GetProductEvent(0, 0));
   }
 }
+

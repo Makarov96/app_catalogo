@@ -43,25 +43,16 @@ void main() {
           emitsInOrder(<CategoryState>[CategoryInitial()]));
     });
 
-    /**
-    * 
-     blocTest<CategoryBloc, CategoryState>(
+    blocTest<CategoryBloc, CategoryState>(
       'when send Caegory initial bloc',
       build: () {
-        return CategoryBloc(mockGetCategoryUseCase);
-      },
-      setUp: () {
-        _listProductCategory.add(
-          ProductCategory('All', 1),
-        );
+        return MockCategoryBloc();
       },
       act: (bloc) => bloc.add(CategoryInitialEvent()),
       expect: () => [
-        CategoryLoading(),
-        CategoryLoaded(tCategoryModel),
+
       ],
     );
-    */
 
     blocTest<CategoryBloc, CategoryState>(
       'when send refresh event bloc',

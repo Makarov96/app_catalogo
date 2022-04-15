@@ -5,16 +5,14 @@
 import 'dart:async' as _i4;
 
 import 'package:core_catalogo_module/core/error/exception.dart' as _i5;
-import 'package:core_catalogo_module/feature/data/model/request/set_favorite_request_model.dart'
-    as _i6;
 import 'package:core_catalogo_module/feature/data/model/response/product_model.dart'
-    as _i8;
-import 'package:core_catalogo_module/feature/domain/usecases/get_all_product.dart'
-    as _i10;
-import 'package:core_catalogo_module/feature/domain/usecases/search_by_product_name.dart'
-    as _i9;
-import 'package:core_catalogo_module/feature/domain/usecases/search_by_tag_id.dart'
     as _i7;
+import 'package:core_catalogo_module/feature/domain/usecases/get_all_product.dart'
+    as _i9;
+import 'package:core_catalogo_module/feature/domain/usecases/search_by_product_name.dart'
+    as _i6;
+import 'package:core_catalogo_module/feature/domain/usecases/search_by_tag_id.dart'
+    as _i8;
 import 'package:core_catalogo_module/feature/domain/usecases/set_favorite_product.dart'
     as _i3;
 import 'package:dartz/dartz.dart' as _i2;
@@ -43,54 +41,36 @@ class MockSetFavoriteProduct extends _i1.Mock
 
   @override
   _i4.Future<_i2.Either<_i5.GenericException, bool>> call(
-          _i6.SetFavoriteRequestModel? params) =>
+          _i3.FavoriteParams? params) =>
       (super.noSuchMethod(Invocation.method(#call, [params]),
               returnValue: Future<_i2.Either<_i5.GenericException, bool>>.value(
                   _FakeEither_0<_i5.GenericException, bool>()))
           as _i4.Future<_i2.Either<_i5.GenericException, bool>>);
 }
 
-/// A class which mocks [SearchByTagId].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockSearchByTagId extends _i1.Mock implements _i7.SearchByTagId {
-  MockSearchByTagId() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i4.Future<_i2.Either<_i5.GenericException, _i8.ProductModel>> call(
-          _i7.SearchByParams? params) =>
-      (super.noSuchMethod(Invocation.method(#call, [params]),
-              returnValue: Future<
-                      _i2.Either<_i5.GenericException, _i8.ProductModel>>.value(
-                  _FakeEither_0<_i5.GenericException, _i8.ProductModel>()))
-          as _i4.Future<_i2.Either<_i5.GenericException, _i8.ProductModel>>);
-}
-
 /// A class which mocks [SearchByProductName].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSearchByProductName extends _i1.Mock
-    implements _i9.SearchByProductName {
+    implements _i6.SearchByProductName {
   MockSearchByProductName() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.GenericException, _i8.ProductModel>> call(
-          _i9.SearchProductsParams? params) =>
+  _i4.Future<_i2.Either<_i5.GenericException, _i7.ProductModel>> call(
+          _i6.SearchProductsParams? params) =>
       (super.noSuchMethod(Invocation.method(#call, [params]),
               returnValue: Future<
-                      _i2.Either<_i5.GenericException, _i8.ProductModel>>.value(
-                  _FakeEither_0<_i5.GenericException, _i8.ProductModel>()))
-          as _i4.Future<_i2.Either<_i5.GenericException, _i8.ProductModel>>);
+                      _i2.Either<_i5.GenericException, _i7.ProductModel>>.value(
+                  _FakeEither_0<_i5.GenericException, _i7.ProductModel>()))
+          as _i4.Future<_i2.Either<_i5.GenericException, _i7.ProductModel>>);
 }
 
 /// A class which mocks [Product].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProduct extends _i1.Mock implements _i8.Product {
+class MockProduct extends _i1.Mock implements _i7.Product {
   MockProduct() {
     _i1.throwOnMissingStub(this);
   }
@@ -139,31 +119,66 @@ class MockProduct extends _i1.Mock implements _i8.Product {
 /// A class which mocks [ProductModel].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProductModel extends _i1.Mock implements _i8.ProductModel {
+class MockProductModel extends _i1.Mock implements _i7.ProductModel {
   MockProductModel() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  List<_i8.Product> get product =>
+  List<_i7.Product> get product =>
       (super.noSuchMethod(Invocation.getter(#product),
-          returnValue: <_i8.Product>[]) as List<_i8.Product>);
+          returnValue: <_i7.Product>[]) as List<_i7.Product>);
   @override
   Map<String, dynamic> toJson() =>
       (super.noSuchMethod(Invocation.method(#toJson, []),
           returnValue: <String, dynamic>{}) as Map<String, dynamic>);
 }
 
+/// A class which mocks [SearchByTagId].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSearchByTagId extends _i1.Mock implements _i8.SearchByTagId {
+  MockSearchByTagId() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.GenericException, _i7.ProductModel>> call(
+          _i8.SearchByParams? params) =>
+      (super.noSuchMethod(Invocation.method(#call, [params]),
+              returnValue: Future<
+                      _i2.Either<_i5.GenericException, _i7.ProductModel>>.value(
+                  _FakeEither_0<_i5.GenericException, _i7.ProductModel>()))
+          as _i4.Future<_i2.Either<_i5.GenericException, _i7.ProductModel>>);
+}
+
+/// A class which mocks [SearchByParams].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSearchByParams extends _i1.Mock implements _i8.SearchByParams {
+  MockSearchByParams() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  int get tagId =>
+      (super.noSuchMethod(Invocation.getter(#tagId), returnValue: 0) as int);
+  @override
+  List<Object?> get props =>
+      (super.noSuchMethod(Invocation.getter(#props), returnValue: <Object?>[])
+          as List<Object?>);
+}
+
 /// A class which mocks [GetAllProducts].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetAllProducts extends _i1.Mock implements _i10.GetAllProducts {
+class MockGetAllProducts extends _i1.Mock implements _i9.GetAllProducts {
   @override
-  _i4.Future<_i2.Either<_i5.GenericException, _i8.ProductModel>> call(
-          _i10.ProductsParams? params) =>
+  _i4.Future<_i2.Either<_i5.GenericException, _i7.ProductModel>> call(
+          _i9.ProductsParams? params) =>
       (super.noSuchMethod(Invocation.method(#call, [params]),
               returnValue: Future<
-                      _i2.Either<_i5.GenericException, _i8.ProductModel>>.value(
-                  _FakeEither_0<_i5.GenericException, _i8.ProductModel>()))
-          as _i4.Future<_i2.Either<_i5.GenericException, _i8.ProductModel>>);
+                      _i2.Either<_i5.GenericException, _i7.ProductModel>>.value(
+                  _FakeEither_0<_i5.GenericException, _i7.ProductModel>()))
+          as _i4.Future<_i2.Either<_i5.GenericException, _i7.ProductModel>>);
 }
